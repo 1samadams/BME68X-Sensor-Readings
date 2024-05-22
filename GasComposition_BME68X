@@ -1,5 +1,5 @@
-#necessary libraries 
-#pip install bme680
+# Libraries 
+# pip install bme680
 
 # -----------------------------------------------------------------------
 # Initialization: The BME680 sensor is initialized using the I2C address.
