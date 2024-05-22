@@ -1,6 +1,8 @@
 #necessary libraries 
 #pip install bme680
 
+#Queries sensor for CO2 values every hour, and displays the values graphically for the past 24 hours, past 5 days, and past 30 days.
+
 import bme680
 
 # Initialize BME680 sensor
