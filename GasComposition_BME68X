@@ -1,7 +1,13 @@
 #necessary libraries 
 #pip install bme680
 
-#Queries sensor for CO2 values every hour, and displays the values graphically for the past 24 hours, past 5 days, and past 30 days.
+# -----------------------------------------------------------------------
+# Initialization: The BME680 sensor is initialized using the I2C address.
+# Configuration: The sensor is configured for humidity, pressure, temperature, and gas measurements.
+# Data Collection: The get_gas_composition function reads the sensor data, including temperature, pressure, humidity, and gas resistance, and calculates the air quality.
+# Air Quality Calculation: A placeholder function calculate_air_quality is provided, which can be replaced with a specific formula or library function for accurate air quality calculations.
+# On-Demand Query: The script includes an example of how to query the sensor on demand and print the results.
+# -----------------------------------------------------------------------
 
 import bme680
 
