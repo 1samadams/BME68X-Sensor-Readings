@@ -1,0 +1,49 @@
+#necessary libraries pip install bme680
+
+import bme680
+
+# Initialize BME680 sensor
+sensor = bme680.BME680(bme680.I2C_ADDR_PRIMARY)
+
+# Configure the sensor
+sensor.set_humidity_oversample(bme680.OS_2X)
+sensor.set_pressure_oversample(bme680.OS_4X)
+sensor.set_temperature_oversample(bme680.OS_8X)
+sensor.set_filter(bme680.FILTER_SIZE_3)
+sensor.set_gas_status(bme680.ENABLE_GAS_MEAS)
+sensor.set_gas_heater_temperature(320)
+sensor.set_gas_heater_duration(150)
+sensor.select_gas_heater_profile(0)
+
+def get_gas_composition():
+    if sensor.get_sensor_data():
+        gas_resistance = sensor.data.gas_resistance
+        air_quality = calculate_air_quality(gas_resistance)
+        
+        return {
+            "temperature": sensor.data.temperature,
+            "pressure": sensor.data.pressure,
+            "humidity": sensor.data.humidity,
+            "gas_resistance": gas_resistance,
+            "air_quality": air_quality
+        }
+    else:
+        return None
+
+def calculate_air_quality(gas_resistance):
+    # Placeholder function for actual air quality calculation
+    # You can replace this with a specific formula or library function
+    air_quality = 100 - (gas_resistance / 1000)  # Simplified example
+    return air_quality
+
+# Example of querying the sensor on demand
+if __name__ == "__main__":
+    gas_composition = get_gas_composition()
+    if gas_composition:
+        print(f"Temperature: {gas_composition['temperature']} °C")
+        print(f"Pressure: {gas_composition['pressure']} hPa")
+        print(f"Humidity: {gas_composition['humidity']} %")
+        print(f"Gas Resistance: {gas_composition['gas_resistance']} Ohms")
+        print(f"Air Quality: {gas_composition['air_quality']} %")
+    else:
+        print("Failed to get sensor data")
