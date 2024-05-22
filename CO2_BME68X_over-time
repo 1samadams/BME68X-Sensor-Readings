@@ -1,3 +1,6 @@
+#Required libraries
+#pip install bme680 matplotlib pandas
+
 import time
 import bme680
 import matplotlib.pyplot as plt
