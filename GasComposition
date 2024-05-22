@@ -1,4 +1,5 @@
-#necessary libraries pip install bme680
+#necessary libraries 
+#pip install bme680
 
 import bme680
 
